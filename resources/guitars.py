@@ -9,12 +9,8 @@ class GuitarList(Resource):
         data = GuitarModel.get_all()
         if not data:
             return {"message": "მონაცემები არ არსებობს"}, 404
-
-        guitar_list = []
-        for i in range(len(data)):
-            guitar = GuitarModel.json(data[i])
-            guitar_list.append(guitar)
-        return guitar_list, 200
+        guitar_list = list(map(lambda guitar: guitar.json(), data))
+        return {"guitars": guitar_list}, 200
 
     @jwt_required()
     def delete(self):
