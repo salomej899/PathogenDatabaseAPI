@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 from flask_restful import Api
 from flask_jwt import JWT
 from security import authentication, identity
@@ -14,9 +14,16 @@ api = Api(app)
 
 jwt = JWT(app, authentication, identity)
 
+
 @app.before_first_request
 def create_table():
     db.create_all()
+
+
+@app.route("/")
+def home():
+    return redirect("https://github.com/salomej899/GuitarStore_Rest_API/tree/main"), 302
+
 
 api.add_resource(GuitarList, "/guitars")
 api.add_resource(Guitar, '/guitars/<string:name>')
