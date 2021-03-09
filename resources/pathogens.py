@@ -85,7 +85,7 @@ class Pathogen(Resource):
             message, code = f"მონაცემი {name} განახლებულია", 200
 
         else:
-            strain = PathogenModelModel(**params)
+            strain = PathogenModel(**params)
             message, code = f"მონაცემი {name} დამატებულია", 201
 
         strain.save_to_db()
