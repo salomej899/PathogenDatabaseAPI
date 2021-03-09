@@ -79,7 +79,7 @@ class Pathogen(Resource):
     def put(self, name):
         params = self.parser.parse_args()
         strain = PathogenModel.find_by_name(name)
-        if pathogen:
+        if strain:
             strain.region = params['region']
             strain.sequence = params['sequence']
             message, code = f"მონაცემი {name} განახლებულია", 200
