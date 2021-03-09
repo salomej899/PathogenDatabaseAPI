@@ -3,7 +3,7 @@ from flask_restful import Api
 from flask_jwt import JWT
 from security import authentication, identity
 from resources.users import RegisterUser
-from resources.guitars import GuitarList, Guitar
+from resources.pathogens import PathogenList, Pathogen
 
 app = Flask(__name__)
 app.secret_key = 'secret_key'
@@ -20,8 +20,8 @@ def home():
     return redirect("https://github.com/salomej899/GuitarStore_Rest_API/tree/main"), 302
 
 
-api.add_resource(GuitarList, "/guitars")
-api.add_resource(Guitar, '/guitars/<string:name>')
+api.add_resource(PathogenList, "/pathogens")
+api.add_resource(Pathogen, '/pathogens/<string:name>')
 api.add_resource(RegisterUser, '/registration')
 
 if __name__ == "__main__":
